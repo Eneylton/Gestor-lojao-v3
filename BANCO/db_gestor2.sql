@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 09-Abr-2021 às 22:30
+-- Tempo de geração: 10-Abr-2021 às 05:11
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 7.4.14
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `db_gestor_lojao`
+-- Banco de dados: `db_gestor2`
 --
 
 -- --------------------------------------------------------
@@ -84,15 +84,15 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id`, `nome`, `telefone`, `email`, `placa`, `usuarios_id`, `marcas_id`, `veiculo`) VALUES
-(1, 'Eneylton Barros ', '98 991581962', 'eneylton@hotmail.com', 'NHO-5566', 13, 1, 'ee'),
-(2, 'Magarette Menezes', '98991581962', 'eneylton@hotmail.com', 'NHO-8596', 4, 1, 'ee'),
-(4, 'Lojao Carro', '98991581962', 'eneylton@hotmail.com', 'NHO-8596', 4, 1, 'ee'),
-(5, 'Livia Barros', '9891581965', 'eneylton@hotmail.com', 'NHO-8596', 4, 1, 'ee'),
-(6, 'Davi', '989852222', 'davi@hotmail.com', 'HPA-19655', 4, 1, 'ee'),
-(7, 'Lojao Carro', '98991581962', 'eneylton@hotmail.com', 'NHO-8596', 4, 1, 'ee'),
-(9, 'Lojao Carro', '98991581962', 'eneylton@hotmail.com', 'NHO-8596', 4, 1, NULL),
-(10, 'Lojao Carro', '98991581962', 'eneylton@hotmail.com', 'NHO-8596', 4, 1, NULL),
-(11, 'Carolinne ', '98 954422', 'eneylton@hotmail.com', 'HPA-19655', 4, 2, NULL);
+(1, 'Eneylton Barros ', '98 991581962', 'eneylton@hotmail.com', 'NHO-5566', 13, 1, 'Gol G5 1.6 2002'),
+(2, 'Magarette Menezes', '98991581962', 'eneylton@hotmail.com', 'NHO-8596', 4, 1, 'Nissan Frontier 2005'),
+(4, 'Lojao Carro', '98991581962', 'eneylton@hotmail.com', 'NHO-8596', 4, 1, 'Corolla 2006'),
+(5, 'Livia Barros', '9891581965', 'eneylton@hotmail.com', 'NHO-8596', 4, 1, 'Fiat Gran Seinne 1.4'),
+(6, 'Davi', '989852222', 'davi@hotmail.com', 'HPA-19655', 4, 1, 'Ford Fista ROCAM'),
+(7, 'Lojao Carro', '98991581962', 'eneylton@hotmail.com', 'NHO-8596', 4, 1, 'Vectra 2.0 99'),
+(9, 'Lojao Carro', '98991581962', 'eneylton@hotmail.com', 'NHO-8596', 4, 1, 'Novo Uno 2005'),
+(10, 'Lojao Carro', '98991581962', 'eneylton@hotmail.com', 'NHO-8596', 4, 1, 'Corsa 1.0'),
+(11, 'Carolinne ', '98 954422', 'eneylton@hotmail.com', 'HPA-19655', 4, 2, 'New Fiesta 2.0');
 
 -- --------------------------------------------------------
 
@@ -278,24 +278,6 @@ INSERT INTO `mecanicos` (`id`, `nome`, `telefone`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `orcamento_final`
---
-
-CREATE TABLE `orcamento_final` (
-  `id` int(11) NOT NULL,
-  `data` timestamp NULL DEFAULT current_timestamp(),
-  `total_produto` decimal(10,2) DEFAULT NULL,
-  `total_servicos` decimal(10,2) DEFAULT NULL,
-  `total_obra` decimal(10,2) DEFAULT NULL,
-  `valor_recebido` decimal(10,2) DEFAULT NULL,
-  `usuarios_id` int(11) NOT NULL,
-  `clientes_id` int(11) NOT NULL,
-  `mecanicos_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `ordem_servicos`
 --
 
@@ -308,6 +290,42 @@ CREATE TABLE `ordem_servicos` (
   `mao_obra` decimal(10,2) DEFAULT NULL,
   `obs` varchar(225) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `ordem_servicos`
+--
+
+INSERT INTO `ordem_servicos` (`id`, `data`, `clientes_id`, `mecanicos_id`, `servicos_id`, `mao_obra`, `obs`) VALUES
+(1, '2021-04-09 22:31:01', 1, 1, 1, '150.00', 'ooobs'),
+(2, '2021-04-09 22:31:06', 1, 1, 3, '150.00', 'ooobs'),
+(3, '2021-04-09 22:40:17', 2, 1, 1, '180.00', 'Teste de cadastro'),
+(4, '2021-04-09 22:40:24', 2, 1, 3, '180.00', 'Teste de cadastro'),
+(5, '2021-04-09 22:40:31', 2, 1, 6, '180.00', 'Teste de cadastro'),
+(6, '2021-04-09 22:54:56', 2, 1, 1, '200.00', 'teste ok'),
+(7, '2021-04-09 22:55:34', 2, 1, 7, '200.00', 'teste ok'),
+(8, '2021-04-09 23:02:03', 1, 1, 1, '157.38', 'teste'),
+(9, '2021-04-09 23:02:22', 1, 1, 4, '157.38', 'teste'),
+(10, '2021-04-09 23:18:13', 2, 2, 1, '157.38', 'Carro Velho'),
+(11, '2021-04-09 23:18:18', 2, 2, 3, '157.38', 'Carro Velho'),
+(12, '2021-04-09 23:19:25', 2, 2, 1, '157.38', 'Carro Velho'),
+(13, '2021-04-09 23:19:32', 2, 2, 3, '157.38', 'Carro Velho'),
+(14, '2021-04-09 23:21:35', 2, 2, 1, '157.38', 'Carro Velho'),
+(15, '2021-04-09 23:21:40', 2, 2, 3, '157.38', 'Carro Velho'),
+(16, '2021-04-09 23:36:37', 5, 2, 3, '157.38', 'cliente ook'),
+(17, '2021-04-09 23:38:05', 5, 2, 3, '157.38', 'cliente ook'),
+(18, '2021-04-09 23:41:07', 2, 1, 4, '157.38', 'eita'),
+(19, '2021-04-09 23:41:14', 2, 1, 6, '157.38', 'eita'),
+(20, '2021-04-09 23:41:21', 2, 1, 7, '157.38', 'eita'),
+(21, '2021-04-10 00:38:13', 2, 1, 1, '157.38', 'pe grande'),
+(22, '2021-04-10 00:38:13', 2, 1, 3, '157.38', 'pe grande'),
+(25, '2021-04-10 01:12:14', 2, 1, 1, '145.87', 'ppp'),
+(26, '2021-04-10 01:12:22', 2, 1, 7, '145.87', 'ppp'),
+(27, '2021-04-10 01:43:06', 2, 2, 1, '145.87', 'OOK'),
+(28, '2021-04-10 01:43:09', 2, 2, 3, '145.87', 'OOK'),
+(29, '2021-04-10 02:56:46', 5, 1, 1, '350.00', 'Cliente Ja vei Outrs vez'),
+(30, '2021-04-10 02:56:46', 5, 1, 7, '350.00', 'Cliente Ja vei Outrs vez'),
+(31, '2021-04-10 03:01:12', 4, 3, 1, '145.87', 'uk'),
+(32, '2021-04-10 03:01:12', 4, 3, 7, '145.87', 'uk');
 
 -- --------------------------------------------------------
 
@@ -740,7 +758,7 @@ INSERT INTO `produtos` (`id`, `barra`, `codigo`, `nome`, `qtd`, `valor_compra`, 
 (382, '7898605589944    ', 769987, 'CORREIA HIDRAULICO SANDERO 1.0 /119205655R', 0, '5.00', '6.00', 11, NULL, '', '2021-03-18 22:45:38', 0, 8),
 (383, '7891579230195    ', 770894, 'CORREIA ONIX ELASTICA ALT / 5KP1051 CONTINENTAL', 0, '5.00', '5.00', NULL, NULL, '', '2021-03-18 22:45:38', 0, 8),
 (384, '7898261418091    ', 771525, 'COXIM AGILE VECTRA DT / KSC04107S COFAP', 0, '5.00', '2.50', 11, NULL, '', '2021-03-18 22:45:38', 0, 8),
-(385, '7892968010756    ', 769767, 'COXIM CLIO DT / MB9192A MOBESANE', 0, '5.00', '5.00', 2, NULL, '', '2021-03-18 22:45:38', 0, 8),
+(385, '7892968010756    ', 769767, 'COXIM CLIO DT / MB9192A MOBESANE', 0, '5.00', '5.84', 2, NULL, '', '2021-03-18 22:45:38', 0, 8),
 (386, '', 770730, 'COXIM CORSA CLASSIC / BR13202100789 / MONROE', 0, '5.00', '6.00', 1, NULL, '', '2021-03-18 22:45:38', 0, 8),
 (387, '', 771133, 'COXIM DO MOTOR ONIX DT / 95405221 GM', 0, '5.00', '5.00', 1, NULL, '', '2021-03-18 22:45:38', 0, 8),
 (388, '7898261411177    ', 771348, 'COXIM DO SILENCIOSO - MOBENSANI', 0, '5.00', '5.00', 1, NULL, '', '2021-03-18 22:45:38', 0, 8),
@@ -1546,22 +1564,21 @@ INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `veiculos`
+-- Estrutura da tabela `vendas`
 --
 
-CREATE TABLE `veiculos` (
+CREATE TABLE `vendas` (
   `id` int(11) NOT NULL,
-  `nome` varchar(45) DEFAULT NULL,
-  `marca_id` int(11) NOT NULL
+  `data` timestamp NULL DEFAULT current_timestamp(),
+  `total_produto` decimal(10,2) DEFAULT NULL,
+  `total_servicos` decimal(10,2) DEFAULT NULL,
+  `total_obra` decimal(10,2) DEFAULT NULL,
+  `valor_recebido` decimal(10,2) DEFAULT NULL,
+  `usuarios_id` int(11) NOT NULL,
+  `clientes_id` int(11) NOT NULL,
+  `mecanicos_id` int(11) NOT NULL,
+  `forma_pagamento_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `veiculos`
---
-
-INSERT INTO `veiculos` (`id`, `nome`, `marca_id`) VALUES
-(1, 'Golf', 1),
-(2, 'Fiat Uno', 2);
 
 --
 -- Índices para tabelas despejadas
@@ -1624,15 +1641,6 @@ ALTER TABLE `mecanicos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `orcamento_final`
---
-ALTER TABLE `orcamento_final`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_orcamento_final_usuarios1_idx` (`usuarios_id`),
-  ADD KEY `fk_orcamento_final_clientes1_idx` (`clientes_id`),
-  ADD KEY `fk_orcamento_final_mecanicos1_idx` (`mecanicos_id`);
-
---
 -- Índices para tabela `ordem_servicos`
 --
 ALTER TABLE `ordem_servicos`
@@ -1672,11 +1680,14 @@ ALTER TABLE `usuarios`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Índices para tabela `veiculos`
+-- Índices para tabela `vendas`
 --
-ALTER TABLE `veiculos`
+ALTER TABLE `vendas`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_veiculo_marca1_idx` (`marca_id`);
+  ADD KEY `fk_orcamento_final_usuarios1_idx` (`usuarios_id`),
+  ADD KEY `fk_orcamento_final_clientes1_idx` (`clientes_id`),
+  ADD KEY `fk_orcamento_final_mecanicos1_idx` (`mecanicos_id`),
+  ADD KEY `fk_vendas_forma_pagamento1_idx` (`forma_pagamento_id`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -1731,16 +1742,10 @@ ALTER TABLE `mecanicos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de tabela `orcamento_final`
---
-ALTER TABLE `orcamento_final`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de tabela `ordem_servicos`
 --
 ALTER TABLE `ordem_servicos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos`
@@ -1767,10 +1772,10 @@ ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT de tabela `veiculos`
+-- AUTO_INCREMENT de tabela `vendas`
 --
-ALTER TABLE `veiculos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `vendas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para despejos de tabelas
@@ -1804,14 +1809,6 @@ ALTER TABLE `galerias`
   ADD CONSTRAINT `fk_galerias_produtos1` FOREIGN KEY (`produtos_id`) REFERENCES `produtos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Limitadores para a tabela `orcamento_final`
---
-ALTER TABLE `orcamento_final`
-  ADD CONSTRAINT `fk_orcamento_final_clientes1` FOREIGN KEY (`clientes_id`) REFERENCES `clientes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_orcamento_final_mecanicos1` FOREIGN KEY (`mecanicos_id`) REFERENCES `mecanicos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_orcamento_final_usuarios1` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Limitadores para a tabela `ordem_servicos`
 --
 ALTER TABLE `ordem_servicos`
@@ -1835,10 +1832,13 @@ ALTER TABLE `produtos`
   ADD CONSTRAINT `fk_produtos_usuarios1` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Limitadores para a tabela `veiculos`
+-- Limitadores para a tabela `vendas`
 --
-ALTER TABLE `veiculos`
-  ADD CONSTRAINT `fk_veiculo_marca1` FOREIGN KEY (`marca_id`) REFERENCES `marcas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `vendas`
+  ADD CONSTRAINT `fk_orcamento_final_clientes1` FOREIGN KEY (`clientes_id`) REFERENCES `clientes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_orcamento_final_mecanicos1` FOREIGN KEY (`mecanicos_id`) REFERENCES `mecanicos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_orcamento_final_usuarios1` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_vendas_forma_pagamento1` FOREIGN KEY (`forma_pagamento_id`) REFERENCES `forma_pagamento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -170,7 +170,7 @@ foreach ($paginas as $key => $pagina) {
 
               </div>
 
-              <div class="card-body table-responsive p-0" style="height: 550px;">
+              <div class="card-body table-responsive p-0" style="height: 460px;">
                 <table class="table table-head-fixed text-nowrap">
                   <thead>
                   <th>
@@ -209,6 +209,8 @@ foreach ($paginas as $key => $pagina) {
           <?php
 
 use \App\Entidy\Produto;
+
+$_SESSION['dados-venda'] = array();
 
 $listItem = '';
 $total = 0;
@@ -261,6 +263,18 @@ foreach ($_SESSION['carrinho'] as $id => $qtd) {
             </tr>
 
             ';
+
+            array_push(
+              $_SESSION['dados-venda'],
+  
+              array(
+                  'nome'         => $nome,
+                  'qtd'          => $qtd,
+                  'valor_venda'  => $valor_venda,
+                  'subtotal'     => $sub,
+                  'produtos_id'  => $id
+              )
+          );
 
 }
 

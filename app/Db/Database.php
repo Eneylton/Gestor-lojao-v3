@@ -9,7 +9,7 @@ class Database
 {
 
     const HOST = 'localhost';
-    const NAME = 'db_gestor_lojao';
+    const NAME = 'db_gestor2';
     const USER = 'root';
     const PASS = '';
 
@@ -184,6 +184,7 @@ class Database
         p.foto as foto,
         p.estoque as estoque,
         p.valor_compra as valor_compra,
+        p.valor_venda as valor_venda,
         c.nome as categoria
         
     FROM
